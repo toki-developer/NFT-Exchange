@@ -15,7 +15,7 @@ npx hardhat run --network localhost scripts/deploy.ts
 
 ```
 // デプロイ済みのコントラクトに接続
-const Contract = await ethers.getContractFactory("NFTTrade");
+const Contract = await ethers.getContractFactory("NFTExchange");
 var contract = await Contract.attach([コントラクトのアドレス])
 
 // contract.関数で、コントラクトの関数を実行できる

@@ -1,8 +1,8 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const NFTTrade = await ethers.getContractFactory("NFTTrade");
-  const depolyedContract = await NFTTrade.deploy();
+  const NFTExchange = await ethers.getContractFactory("NFTExchange");
+  const depolyedContract = await NFTExchange.deploy();
 
   await depolyedContract.deployed();
 

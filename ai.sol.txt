@@ -1,0 +1,44 @@
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.9;
+
+contract NFTTrade {
+  // オーダー情報を保存する配列
+//   struct Order {
+//     address senderContractAddress;
+//     uint256 senderTokenId;
+//     address receiverContractAddress;
+//     uint256 receiverTokenId;
+//     address sender;
+//     address receiver;
+//   }
+
+//   // オーダーの数をカウントする変数
+//   uint256 public orderCount;
+
+//   // オーダーを保存する配列
+//   Order[] public orders;
+
+//   // NFTの交換オーダーを登録する関数
+//   function registerOrder(address _senderContractAddress, uint256 _senderTokenId, address _receiverContractAddress, uint256 _receiverTokenId, address _sender, address _receiver) public {
+//     // 新しいオーダーを作成
+//     Order memory newOrder = Order(_senderContractAddress, _senderTokenId, _receiverContractAddress, _receiverTokenId, _sender, _receiver);
+
+//     // 配列に新しいオーダーを追加
+//     orders.push(newOrder);
+
+//     // オーダー数をインクリメント
+//     orderCount++;
+//   }
+
+//   // NFTの交換を承認する関数
+//   function approveOrder(uint256 _orderId) public {
+//     // オーダーを取得
+//     Order storage order = orders[_orderId];
+
+//     // 送信者から受信者へNFTを送信
+//     ERC721(_senderContractAddress).safeTransferFrom(order.sender, order.receiver, order.senderTokenId);
+
+//     // 受信者から送信者へNFTを送信
+//     ERC721(_receiverContractAddress).safeTransferFrom(order.receiver, order.sender, order.receiverTokenId);
+//   }
+}

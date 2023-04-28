@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-import "hardhat/console.sol";
-
 contract NFTExchange {
+
+    event OrderCreated(address indexed sender, address indexed senderNFTContractAddress, uint256 senderNFTTokenId, address indexed receiverNFTContractAddress, uint256 receiverNFTTokenId);
+    event OrderApproved(address indexed sender, address indexed approver);
+
 
     mapping(address => Order) private myOrder;
 
@@ -14,15 +16,13 @@ contract NFTExchange {
         uint256 receiverNFTTokenId;
     }
 
-    event OrderCreated(address indexed sender, address indexed senderNFTContractAddress, uint256 senderNFTTokenId, address indexed receiverNFTContractAddress, uint256 receiverNFTTokenId);
-    event OrderApproved(address indexed sender, address indexed approver);
-
     function createOrder(address _senderNFTContractAddress, uint256 _senderNFTTokenId, address _receiverNFTContractAddress, uint256 _receiverNFTTokenId) public {
         if(IERC721(_senderNFTContractAddress).getApproved(_senderNFTTokenId) != address(this)) revert("NFT you hold is not approve");
 
         myOrder[msg.sender] =  Order(_senderNFTContractAddress, _senderNFTTokenId, _receiverNFTContractAddress, _receiverNFTTokenId);
         emit OrderCreated(msg.sender, _senderNFTContractAddress, _senderNFTTokenId, _receiverNFTContractAddress, _receiverNFTTokenId);
     }
+
     function approveOrder(address orderSender) public {
         if(myOrder[orderSender].senderNFTContractAddress == address(0)) revert("Order Not Found");
 

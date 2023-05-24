@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY;
 const ACCOUNT_PRIVATE_KEY_DEV = process.env.ACCOUNT_PRIVATE_KEY_DEV ?? "";
 const ACCOUNT_PRIVATE_KEY_MAIN = process.env.ACCOUNT_PRIVATE_KEY_MAIN ?? "";
 
@@ -14,8 +15,10 @@ const ALCHEMY_API_KEY_GOERIL = process.env.ALCHEMY_API_KEY_GOERIL;
 const ALCHEMY_API_KEY_MAIN = process.env.ALCHEMY_API_KEY_MAIN;
 
 //mumbai
+const ALCHEMY_API_KEY_POLYGON = process.env.ALCHEMY_API_KEY_POLYGON;
+
+//mumbai
 const ALCHEMY_API_KEY_MUMBAI = process.env.ALCHEMY_API_KEY_MUMBAI;
-const ACCOUNT_PRIVATE_KEY_MUMBAI = process.env.ACCOUNT_PRIVATE_KEY_MUMBAI ?? "";
 
 //sepolia
 const ALCHEMY_API_KEY_SEPOLIA = process.env.ALCHEMY_API_KEY_SEPOLIA;
@@ -39,9 +42,13 @@ const config: HardhatUserConfig = {
     //   url: `https://polygon-mumbai.g.alchemy.com/v2/${ALCHEMY_API_KEY_MUMBAI}`,
     //   accounts: [ACCOUNT_PRIVATE_KEY_DEV],
     // },
+    polygon: {
+      url: `https://polygon-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY_POLYGON}`,
+      accounts: [ACCOUNT_PRIVATE_KEY_MAIN],
+    },
   },
   etherscan: {
-    apiKey: ETHERSCAN_API_KEY,
+    apiKey: { polygon: POLYGONSCAN_API_KEY ?? "" },
   },
 };
 
